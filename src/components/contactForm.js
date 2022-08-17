@@ -48,11 +48,7 @@ export default function ContactForm(mode) {
       setName();
       setPohneNumber();
     } catch (err) {
-      if (err && err.response.data.msg) {
-        message.warning(err.response.data.msg);
-      } else {
-        message.error('Something went wrong', err);
-      }
+      message.error('Something went wrong', err);
     }
   };
 
@@ -63,14 +59,10 @@ export default function ContactForm(mode) {
         mobileNumber: phoneNumber,
       };
       const res = await ContactsServices.getByNumber(payload);
-      res && res.data && setData([res.data]);
+      res && res.data && setData(...[res.data]);
       message.success('Contact fetched successfully!');
     } catch (err) {
-      if (err && err.response.data.msg) {
-        message.warning(err.response.data.msg);
-      } else {
-        message.error('Something went wrong', err);
-      }
+      message.error('Something went wrong', err);
     }
   };
 
@@ -83,11 +75,6 @@ export default function ContactForm(mode) {
       message.success('Contact fetched successfully!');
     } catch (err) {
       setLoading(false);
-      if (err && err.response.data.msg) {
-        message.warning(err.response.data.msg);
-      } else {
-        message.error('Something went wrong', err);
-      }
     }
   }
 

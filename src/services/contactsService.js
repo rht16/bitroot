@@ -1,12 +1,15 @@
 import axios from 'axios';
-const add = (payload) => axios.post('/add-contacts', payload);
 
-const getAll = () => axios.get('/get-all-contacts');
+const baseUrl = "https://bitroot.herokuapp.com"
 
-const update = ( payload) => axios.put(`/update-contact`, payload);
+const add = (payload) => axios.post(`${baseUrl}/add-contacts`, payload);
 
-const getByNumber = (payload) => axios.post(`/get-contact`, payload);
+const getAll = () => axios.get(`${baseUrl}/get-all-contacts`);
 
-const deleteOpenContact = (id) => axios.delete(`/contact-delete/${id}`);
+const update = ( payload) => axios.put(`${baseUrl}/update-contact`, payload);
+
+const getByNumber = (payload) => axios.post(`${baseUrl}/get-contact`, payload);
+
+const deleteOpenContact = (id) => axios.delete(`${baseUrl}/contact-delete/${id}`);
 
 export default { add, getAll, update, getByNumber, deleteOpenContact }; 
