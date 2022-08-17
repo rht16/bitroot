@@ -59,7 +59,7 @@ export default function ContactForm(mode) {
         mobileNumber: phoneNumber,
       };
       const res = await ContactsServices.getByNumber(payload);
-      res && res.data && setData(...[res.data]);
+      res && res.data && setData([res.data]);
       message.success('Contact fetched successfully!');
     } catch (err) {
       message.error('Something went wrong', err);
